@@ -19,27 +19,25 @@
 
 package com.winthier.tradecontrol;
 
-import net.minecraft.server.v1_4_5.MerchantRecipe;
-import net.minecraft.server.v1_4_5.MerchantRecipeList;
-import org.bukkit.craftbukkit.v1_4_5.inventory.CraftItemStack;
-import org.bukkit.inventory.ItemStack;
+import net.minecraft.server.v1_5_R3.MerchantRecipe;
+import net.minecraft.server.v1_5_R3.MerchantRecipeList;
 
 public class DefaultTrade extends AbstractTrade {
-        private MerchantRecipeList recipes;
-        private int index;
+    private MerchantRecipeList recipes;
+    private int index;
 
-        public DefaultTrade(MerchantRecipeList recipes, int index) {
-                this.recipes = recipes;
-                this.index = index;
-        }
+    public DefaultTrade(MerchantRecipeList recipes, int index) {
+        this.recipes = recipes;
+        this.index = index;
+    }
 
-        @Override
-        @SuppressWarnings("unchecked")
-        public MerchantRecipe getRecipe() {
-                return (MerchantRecipe)recipes.get(index);
-        }
+    @Override
+    @SuppressWarnings("unchecked")
+    public MerchantRecipe getRecipe() {
+        return (MerchantRecipe) recipes.get(index);
+    }
 
-        public int getIndex() {
-                return index;
-        }
+    public int getIndex() {
+        return index;
+    }
 }

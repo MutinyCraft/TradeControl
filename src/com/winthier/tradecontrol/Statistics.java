@@ -19,64 +19,65 @@
 
 package com.winthier.tradecontrol;
 
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Statistics {
-        private TradeControlPlugin plugin;
-        private List<TradePattern> data = new ArrayList<TradePattern>();
+    private TradeControlPlugin plugin;
+    private List<TradePattern> data = new ArrayList<TradePattern>();
 
-        public Statistics(TradeControlPlugin plugin) {
-                this.plugin = plugin;
-        }
+    public Statistics(TradeControlPlugin plugin) {
+        this.plugin = plugin;
+    }
 
-        public TradePattern find(Trade pivot) {
-                for (TradePattern pattern : data) {
-                        if (pattern.matchesIgnoreAmounts(pivot)) {
-                                return pattern;
-                        }
-                }
-                return null;
+    public TradePattern find(Trade pivot) {
+        for (TradePattern pattern : data) {
+            if (pattern.matchesIgnoreAmounts(pivot)) {
+                return pattern;
+            }
         }
+        return null;
+    }
 
-        public void record(Villager villager) {
-                record(villager, null);
-        }
+    public void record(Villager villager) {
+        record(villager, null);
+    }
 
-        public void record(Villager villager, Player player) {
-                for (Trade trade : Util.getTrades(villager, player)) {
-                        record(trade);
-                }
+    public void record(Villager villager, Player player) {
+        for (Trade trade : Util.getTrades(villager, player)) {
+            record(trade);
         }
+    }
 
-        public void record(Trade trade) {
-                TradePattern pattern = find(trade);
-                if (pattern == null) {
-                        pattern = new DefaultTradePattern(trade);
-                        data.add(pattern);
-                } else {
-                        pattern.getBuyItems()[0].adjustAmounts(trade.getBuyItems()[0]);
-                        if (pattern.hasSecondItem()) pattern.getBuyItems()[1].adjustAmounts(trade.getBuyItems()[1]);
-                        pattern.getSellItem().adjustAmounts(trade.getSellItem());
-                }
+    public void record(Trade trade) {
+        TradePattern pattern = find(trade);
+        if (pattern == null) {
+            pattern = new DefaultTradePattern(trade);
+            data.add(pattern);
+        } else {
+            pattern.getBuyItems()[0].adjustAmounts(trade.getBuyItems()[0]);
+            if (pattern.hasSecondItem()) pattern.getBuyItems()[1].adjustAmounts(trade.getBuyItems()[1]);
+            pattern.getSellItem().adjustAmounts(trade.getSellItem());
         }
+    }
 
-        public void print(CommandSender sender) {
-                sender.sendMessage("TradeControl: " + data.size() + " entries");
-                for (TradePattern pattern : data) {
-                        sender.sendMessage("" + pattern);
-                }
+    public void print(CommandSender sender) {
+        sender.sendMessage("TradeControl: " + data.size() + " entries");
+        for (TradePattern pattern : data) {
+            sender.sendMessage("" + pattern);
         }
+    }
 
-        public void print(OutputStream out) {
-                PrintStream ps = new PrintStream(out);
-                for (TradePattern pattern : data) {
-                        ps.println(pattern);
-                }
+    public void print(OutputStream out) {
+        PrintStream ps = new PrintStream(out);
+        for (TradePattern pattern : data) {
+            ps.println(pattern);
         }
+    }
 }

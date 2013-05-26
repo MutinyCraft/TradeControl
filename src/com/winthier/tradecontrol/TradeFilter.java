@@ -19,50 +19,50 @@
 
 package com.winthier.tradecontrol;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TradeFilter {
-        private List<TradePattern> replacements;
-        
-        public static enum Action {
-                DELETE,
-                REPLACE;
+    private List<TradePattern> replacements;
 
-                public static Action getAction(String name) {
-                        for (Action action : values()) {
-                                if (name.equalsIgnoreCase(action.name())) return action;
-                        }
-                        return null;
-                }
+    public static enum Action {
+        DELETE,
+        REPLACE;
+
+        public static Action getAction(String name) {
+            for (Action action : values()) {
+                if (name.equalsIgnoreCase(action.name())) return action;
+            }
+            return null;
         }
+    }
 
-        private TradePattern pattern;
-        private Action action;
+    private TradePattern pattern;
+    private Action action;
 
-        public TradeFilter(TradePattern pattern, Action action) {
-                this.pattern = pattern;
-                this.action = action;
-        }
+    public TradeFilter(TradePattern pattern, Action action) {
+        this.pattern = pattern;
+        this.action = action;
+    }
 
-        public TradePattern getPattern() {
-                return pattern;
-        }
+    public TradePattern getPattern() {
+        return pattern;
+    }
 
-        public Action getAction() {
-                return action;
-        }
+    public Action getAction() {
+        return action;
+    }
 
-        public void setReplacements(List<TradePattern> replacements) {
-                this.replacements = new ArrayList<TradePattern>(replacements);
-        }
+    public void setReplacements(List<TradePattern> replacements) {
+        this.replacements = new ArrayList<TradePattern>(replacements);
+    }
 
-        public TradePattern[] getReplacements() {
-                return replacements.toArray(new TradePattern[0]);
-        }
+    public TradePattern[] getReplacements() {
+        return replacements.toArray(new TradePattern[0]);
+    }
 
-        public Trade createReplacement() {
-                int i = TradeControlPlugin.getInstance().randomInt(0, replacements.size() - 1);
-                return replacements.get(i).create();
-        }
+    public Trade createReplacement() {
+        int i = TradeControlPlugin.getInstance().randomInt(0, replacements.size() - 1);
+        return replacements.get(i).create();
+    }
 }

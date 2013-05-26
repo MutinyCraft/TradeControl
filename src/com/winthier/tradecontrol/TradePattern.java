@@ -20,11 +20,17 @@
 package com.winthier.tradecontrol;
 
 public interface TradePattern {
-        public boolean matches(Trade trade);
-        public boolean matchesIgnoreAmounts(Trade trade);
-        public ItemPattern[] getBuyItems();
-        public ItemPattern getSellItem();
-        public boolean hasSecondItem();
-        public Trade create();
-        public boolean isSimilar(TradePattern other);
+    public boolean matches(Trade trade);
+
+    public boolean matchesIgnoreAmounts(Trade trade);
+
+    public ItemPattern[] getBuyItems();
+
+    public ItemPattern getSellItem();
+
+    public boolean hasSecondItem();
+
+    public Trade create();
+
+    public boolean isSimilar(TradePattern other);
 }

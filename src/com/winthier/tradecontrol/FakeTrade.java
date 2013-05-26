@@ -19,25 +19,26 @@
 
 package com.winthier.tradecontrol;
 
+import net.minecraft.server.v1_5_R3.MerchantRecipe;
+import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
-import net.minecraft.server.v1_4_5.MerchantRecipe;
-import org.bukkit.craftbukkit.v1_4_5.inventory.CraftItemStack;
 
 public class FakeTrade extends AbstractTrade {
-        private ItemStack buyItem1, buyItem2, sellItem;
+    private ItemStack buyItem1, buyItem2, sellItem;
 
-        public FakeTrade(ItemStack buyItem1, ItemStack buyItem2, ItemStack sellItem) {
-                this.buyItem1 = buyItem1;
-                this.buyItem2 = buyItem2;
-                this.sellItem = sellItem;
-        }
+    public FakeTrade(ItemStack buyItem1, ItemStack buyItem2, ItemStack sellItem) {
+        this.buyItem1 = buyItem1;
+        this.buyItem2 = buyItem2;
+        this.sellItem = sellItem;
+    }
 
-        @Override
-        public MerchantRecipe getRecipe() {
-                if (buyItem2 == null) {
-                        return new MerchantRecipe(CraftItemStack.asNMSCopy(buyItem1), CraftItemStack.asNMSCopy(sellItem));
-                } else {
-                        return new MerchantRecipe(CraftItemStack.asNMSCopy(buyItem1), CraftItemStack.asNMSCopy(buyItem2), CraftItemStack.asNMSCopy(sellItem));
-                }
+    @Override
+    public MerchantRecipe getRecipe() {
+        if (buyItem2 == null) {
+            return new MerchantRecipe(CraftItemStack.asNMSCopy(buyItem1), CraftItemStack.asNMSCopy(sellItem));
+        } else {
+            return new MerchantRecipe(CraftItemStack.asNMSCopy(buyItem1), CraftItemStack.asNMSCopy(buyItem2),
+                    CraftItemStack.asNMSCopy(sellItem));
         }
+    }
 }

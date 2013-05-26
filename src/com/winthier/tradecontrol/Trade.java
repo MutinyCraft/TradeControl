@@ -19,12 +19,15 @@
 
 package com.winthier.tradecontrol;
 
+import net.minecraft.server.v1_5_R3.MerchantRecipe;
 import org.bukkit.inventory.ItemStack;
-import net.minecraft.server.v1_4_5.MerchantRecipe;
 
 public interface Trade {
-        public ItemStack[] getBuyItems();
-        public ItemStack getSellItem();
-        public void markForDeletion();
-        public MerchantRecipe getRecipe();
+    public ItemStack[] getBuyItems();
+
+    public ItemStack getSellItem();
+
+    public void markForDeletion();
+
+    public MerchantRecipe getRecipe();
 }

@@ -20,52 +20,53 @@
 package com.winthier.tradecontrol;
 
 import org.bukkit.plugin.java.JavaPlugin;
+
 import java.util.Random;
 
 public class TradeControlPlugin extends JavaPlugin {
-        private static TradeControlPlugin instance;
-        private Configuration configuration;
-        private PlayerListener playerListener;
-        private CommandListener commandListener;
-        private Random random;
-        private Statistics statistics;
+    private static TradeControlPlugin instance;
+    private Configuration configuration;
+    private PlayerListener playerListener;
+    private CommandListener commandListener;
+    private Random random;
+    private Statistics statistics;
 
-        @Override
-        public void onEnable() {
-                instance = this;
-                configuration = new Configuration(this);
-                playerListener = new PlayerListener(this);
-                getServer().getPluginManager().registerEvents(playerListener, this);
-                commandListener = new CommandListener(this);
-                getCommand("tradecontrol").setExecutor(commandListener);
-                random = new Random(System.currentTimeMillis());
-                statistics = new Statistics(this);
-                // for (int i = 0; i < 100; ++i) {
-                //         System.out.println("" + randomInt(5, 10));
-                // }
-        }
-        
-        public static TradeControlPlugin getInstance() {
-                return instance;
-        }
+    @Override
+    public void onEnable() {
+        instance = this;
+        configuration = new Configuration(this);
+        playerListener = new PlayerListener(this);
+        getServer().getPluginManager().registerEvents(playerListener, this);
+        commandListener = new CommandListener(this);
+        getCommand("tradecontrol").setExecutor(commandListener);
+        random = new Random(System.currentTimeMillis());
+        statistics = new Statistics(this);
+        // for (int i = 0; i < 100; ++i) {
+        //         System.out.println("" + randomInt(5, 10));
+        // }
+    }
 
-        public Configuration getConfiguration() {
-                return configuration;
-        }
+    public static TradeControlPlugin getInstance() {
+        return instance;
+    }
 
-        public PlayerListener getPlayerListener() {
-                return playerListener;
-        }
+    public Configuration getConfiguration() {
+        return configuration;
+    }
 
-        public int randomInt(int min, int max) {
-                return random.nextInt(max - min + 1) + min;
-        }
+    public PlayerListener getPlayerListener() {
+        return playerListener;
+    }
 
-        public void reloadConfiguration() {
-                configuration = new Configuration(this);
-        }
+    public int randomInt(int min, int max) {
+        return random.nextInt(max - min + 1) + min;
+    }
 
-        public Statistics getStatistics() {
-                return statistics;
-        }
+    public void reloadConfiguration() {
+        configuration = new Configuration(this);
+    }
+
+    public Statistics getStatistics() {
+        return statistics;
+    }
 }

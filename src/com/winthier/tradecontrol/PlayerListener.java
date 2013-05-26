@@ -19,35 +19,31 @@
 
 package com.winthier.tradecontrol;
 
-import net.minecraft.server.v1_4_5.MerchantRecipeList;
-import net.minecraft.server.v1_4_5.MerchantRecipe;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import java.util.List;
-import java.util.ArrayList;
 
 public class PlayerListener implements Listener {
-        private TradeControlPlugin plugin;
+    private TradeControlPlugin plugin;
 
-        public PlayerListener(TradeControlPlugin plugin) {
-                this.plugin = plugin;
-        }
+    public PlayerListener(TradeControlPlugin plugin) {
+        this.plugin = plugin;
+    }
 
-        @EventHandler
-        @SuppressWarnings("unchecked")
-        public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-                if (event.getRightClicked() instanceof Villager) {
-                        // display debug information
-                        // int num = 0;
-                        // for (String line : Util.list((Villager)event.getRightClicked(), event.getPlayer())) {
-                        //         event.getPlayer().sendMessage("" + (++num) + " " + line);
-                        // }
-                        // record statistics
-                        plugin.getStatistics().record((Villager)event.getRightClicked(), event.getPlayer());
-                        // replace trades according to config
-                        Util.fixVillager((Villager)event.getRightClicked(), event.getPlayer(), plugin);
-                }
+    @EventHandler
+    @SuppressWarnings("unchecked")
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked() instanceof Villager) {
+            // display debug information
+            // int num = 0;
+            // for (String line : Util.list((Villager)event.getRightClicked(), event.getPlayer())) {
+            //         event.getPlayer().sendMessage("" + (++num) + " " + line);
+            // }
+            // record statistics
+            plugin.getStatistics().record((Villager) event.getRightClicked(), event.getPlayer());
+            // replace trades according to config
+            Util.fixVillager((Villager) event.getRightClicked(), event.getPlayer(), plugin);
         }
+    }
 }

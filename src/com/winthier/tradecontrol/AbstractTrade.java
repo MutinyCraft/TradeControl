@@ -19,42 +19,41 @@
 
 package com.winthier.tradecontrol;
 
-import net.minecraft.server.v1_4_5.MerchantRecipe;
-import org.bukkit.craftbukkit.v1_4_5.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_5_R3.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class AbstractTrade implements Trade {
-        private boolean delete = false;
+    private boolean delete = false;
 
-        @Override
-        public ItemStack[] getBuyItems() {
-                ItemStack[] result = new ItemStack[getRecipe().hasSecondItem() ? 2 : 1];
-                result[0] = CraftItemStack.asCraftMirror(getRecipe().getBuyItem1());
-                if (result.length > 1) result[1] = CraftItemStack.asCraftMirror(getRecipe().getBuyItem2());
-                return result;
-        }
+    @Override
+    public ItemStack[] getBuyItems() {
+        ItemStack[] result = new ItemStack[getRecipe().hasSecondItem() ? 2 : 1];
+        result[0] = CraftItemStack.asCraftMirror(getRecipe().getBuyItem1());
+        if (result.length > 1) result[1] = CraftItemStack.asCraftMirror(getRecipe().getBuyItem2());
+        return result;
+    }
 
-        @Override
-        public ItemStack getSellItem() {
-                return CraftItemStack.asCraftMirror(getRecipe().getBuyItem3());
-        }
+    @Override
+    public ItemStack getSellItem() {
+        return CraftItemStack.asCraftMirror(getRecipe().getBuyItem3());
+    }
 
-        @Override
-        public void markForDeletion() {
-                delete = true;
-        }
+    @Override
+    public void markForDeletion() {
+        delete = true;
+    }
 
-        public boolean isMarkedForDeletion() {
-                return delete;
-        }
+    public boolean isMarkedForDeletion() {
+        return delete;
+    }
 
-        @Override
-        public String toString() {
-                String result = Util.printItemStack(CraftItemStack.asCraftMirror(getRecipe().getBuyItem1()));
-                if (getRecipe().hasSecondItem()) {
-                        result += " + " + Util.printItemStack(CraftItemStack.asCraftMirror(getRecipe().getBuyItem2()));
-                }
-                result += " -> " + Util.printItemStack(CraftItemStack.asCraftMirror(getRecipe().getBuyItem3()));
-                return result;
+    @Override
+    public String toString() {
+        String result = Util.printItemStack(CraftItemStack.asCraftMirror(getRecipe().getBuyItem1()));
+        if (getRecipe().hasSecondItem()) {
+            result += " + " + Util.printItemStack(CraftItemStack.asCraftMirror(getRecipe().getBuyItem2()));
         }
+        result += " -> " + Util.printItemStack(CraftItemStack.asCraftMirror(getRecipe().getBuyItem3()));
+        return result;
+    }
 }
