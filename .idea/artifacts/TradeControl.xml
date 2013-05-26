@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TradeControl">
+    <output-path>$PROJECT_DIR$/out/artifacts/TradeControl</output-path>
+    <root id="archive" name="TradeControl.jar">
+      <element id="module-output" name="TradeControl" />
+      <element id="file-copy" path="$PROJECT_DIR$/config.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+    </root>
+  </artifact>
+</component>
