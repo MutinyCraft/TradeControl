@@ -19,7 +19,7 @@
 
 package com.winthier.tradecontrol;
 
-import org.bukkit.craftbukkit.v1_6_R2.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_7_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class AbstractTrade implements Trade {

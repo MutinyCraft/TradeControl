@@ -19,13 +19,13 @@
 
 package com.winthier.tradecontrol;
 
-import net.minecraft.server.v1_6_R2.EntityHuman;
-import net.minecraft.server.v1_6_R2.MerchantRecipe;
-import net.minecraft.server.v1_6_R2.MerchantRecipeList;
+import net.minecraft.server.v1_7_R1.EntityHuman;
+import net.minecraft.server.v1_7_R1.MerchantRecipe;
+import net.minecraft.server.v1_7_R1.MerchantRecipeList;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_6_R2.entity.CraftHumanEntity;
-import org.bukkit.craftbukkit.v1_6_R2.entity.CraftVillager;
-import org.bukkit.craftbukkit.v1_6_R2.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_7_R1.entity.CraftHumanEntity;
+import org.bukkit.craftbukkit.v1_7_R1.entity.CraftVillager;
+import org.bukkit.craftbukkit.v1_7_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
@@ -59,7 +59,7 @@ public class Util {
         return ((CraftVillager) villager).getHandle().getOffers(human);
     }
 
-    public static String printItemStack(net.minecraft.server.v1_6_R2.ItemStack i) {
+    public static String printItemStack(net.minecraft.server.v1_7_R1.ItemStack i) {
         return printItemStack(CraftItemStack.asCraftMirror(i));
     }
 

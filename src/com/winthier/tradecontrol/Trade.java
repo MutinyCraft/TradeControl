@@ -19,7 +19,7 @@
 
 package com.winthier.tradecontrol;
 
-import net.minecraft.server.v1_6_R2.MerchantRecipe;
+import net.minecraft.server.v1_7_R1.MerchantRecipe;
 import org.bukkit.inventory.ItemStack;
 
 public interface Trade {
