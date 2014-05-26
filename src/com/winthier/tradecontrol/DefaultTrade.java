@@ -19,8 +19,8 @@
 
 package com.winthier.tradecontrol;
 
-import net.minecraft.server.v1_7_R1.MerchantRecipe;
-import net.minecraft.server.v1_7_R1.MerchantRecipeList;
+import net.minecraft.server.v1_7_R3.MerchantRecipe;
+import net.minecraft.server.v1_7_R3.MerchantRecipeList;
 
 public class DefaultTrade extends AbstractTrade {
     private MerchantRecipeList recipes;
